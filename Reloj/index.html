@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="">
+
+    <div id="contenedor-reloj">
+        <p id="nombre-dia"></p>
+        <div id="cajas">
+            <div class="caja">
+                <span id="horas">00</span>
+                <label>Horas</label>
+            </div>
+
+            <span class="separador">:</span>
+            <div class="caja">
+                <span id="minutos">00</span>
+                <label>Minutos</label>
+            </div>
+
+            <span class="separador">:</span>
+            <div class="caja">
+                <span id="segundos">00</span>
+                <label>Segundos</label>
+<style>
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #111827;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+#contenedor-reloj {
+    text-align: center;
+}
+
+#nombre-dia {
+    color: #94a3b8;
+    font-size: 2.4rem;
+    text-transform: capitalize;
+    margin-bottom: 2rem;
+    letter-spacing: 0.1em;
+}
+
+#cajas {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.caja {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e3a5f, #1e40af);
+    border: 2px solid #3b82f6;
+    border-radius: 1.2rem;
+    width: 160px;
+    height: 160px;
+    box-shadow: 0 0 24px rgba(59, 130, 246, 0.35);
+}
+
+.caja span {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1;
+}
+
+.caja label {
+    font-size: 0.85rem;
+    color: #93c5fd;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 0.4rem;
+}
+
+.separador {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #a7bee3;
+    margin-bottom: 1.5rem;
+}
+</style>
+
+<script>
+function showReloj() {
+
+    const ahora = new Date();
+
+    const horas = ahora.getHours();
+    const minutos = ahora.getMinutes();
+    const segundos = ahora.getSeconds();
+    const nombreDia = ahora.toLocaleDateString('es-ES', { weekday: 'long' });
+
+    document.getElementById('horas').textContent = horas.toString().padStart(2, '0');
+    document.getElementById('minutos').textContent = minutos.toString().padStart(2, '0');
+    document.getElementById('segundos').textContent = segundos.toString().padStart(2, '0');
+    document.getElementById('nombre-dia').textContent = `Hoy es ${nombreDia}`;
+
+}
+showReloj();
+setInterval(showReloj, 1000);
+</script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
